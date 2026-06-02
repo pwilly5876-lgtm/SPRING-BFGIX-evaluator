@@ -38,6 +38,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 .hv{font-size:15px;font-weight:800;color:#fff;margin-top:2px}
 .hsb{font-size:11px;color:#7a9ccc;margin-top:1px}
 
+/* TAB NAV */
+.tab-nav{background:#fff;border-bottom:2px solid var(--bdr);display:flex;gap:0;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tab-btn{padding:14px 28px;font-size:13px;font-weight:700;color:var(--mu);cursor:pointer;
+  border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-2px;
+  font-family:inherit;transition:all .15s;display:flex;align-items:center;gap:7px}
+.tab-btn:hover{color:var(--accent)}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--accent)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
 /* LAYOUT */
 .main{max-width:1100px;margin:0 auto;padding:26px 22px}
 .st{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;
@@ -51,7 +61,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 .lchip h4{font-size:12px;font-weight:700;color:var(--navy)}
 .lchip p{font-size:11px;color:var(--mu);margin-top:2px;line-height:1.5}
 
-/* HISTORICAL TABLE */
+/* TABLES */
 .tw{background:#fff;border-radius:12px;border:1px solid var(--bdr);overflow:hidden;
   margin-bottom:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
 .tw table{width:100%;border-collapse:collapse}
@@ -74,21 +84,38 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 @media(max-width:820px){.scgrid{grid-template-columns:1fr}}
 .sc{border-radius:14px;border:2px solid;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.07)}
 .sc.bear{border-color:#e2a0a0}.sc.base{border-color:#7ec8a0}.sc.bull{border-color:#f0c060}
+.sc.rdm{border-color:#a090e0}
 .sch{padding:14px 18px 12px}
-.sc.bear .sch{background:var(--rl)}.sc.base .sch{background:var(--gl)}.sc.bull .sch{background:var(--gol)}
+.sc.bear .sch{background:var(--rl)}.sc.base .sch{background:var(--gl)}
+.sc.bull .sch{background:var(--gol)}.sc.rdm .sch{background:var(--pl)}
 .scl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px}
-.sc.bear .scl{color:var(--red)}.sc.base .scl{color:var(--green)}.sc.bull .scl{color:var(--gold)}
+.sc.bear .scl{color:var(--red)}.sc.base .scl{color:var(--green)}
+.sc.bull .scl{color:var(--gold)}.sc.rdm .scl{color:var(--pur)}
 .scr{display:inline-block;font-size:13px;font-weight:800;padding:3px 10px;border-radius:6px;margin-top:5px}
 .sc.bear .scr{background:#f8d0d0;color:var(--red)}.sc.base .scr{background:#c0ecd4;color:var(--green)}
-.sc.bull .scr{background:#fce8a8;color:var(--gold)}
+.sc.bull .scr{background:#fce8a8;color:var(--gold)}.sc.rdm .scr{background:#dcd0f8;color:var(--pur)}
 .scb{background:#fff;padding:16px 18px}
 .hr{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f0f4fa}
 .hr:last-of-type{border-bottom:none}
 .hyr{font-size:11px;font-weight:700;color:var(--mu)}.hdt{font-size:10px;color:#aab4c4;margin-top:1px}
 .hval{font-size:21px;font-weight:900;text-align:right}
-.sc.bear .hval{color:var(--red)}.sc.base .hval{color:var(--green)}.sc.bull .hval{color:var(--gold)}
+.sc.bear .hval{color:var(--red)}.sc.base .hval{color:var(--green)}
+.sc.bull .hval{color:var(--gold)}.sc.rdm .hval{color:var(--pur)}
 .hg{font-size:11px;font-weight:600;text-align:right;margin-top:2px}
-.hg.up{color:var(--green)}.hg.dn{color:var(--red)}
+.hg.up{color:var(--green)}.hg.dn{color:var(--red)}.hg.nu{color:var(--pur)}
+.hsub2{font-size:10px;color:var(--mu);text-align:right;margin-top:1px}
+
+/* CAGR CONTROL BAR */
+.cagr-bar{background:#fff;border:1px solid var(--bdr);border-radius:12px;padding:14px 20px;
+  margin-bottom:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  box-shadow:0 1px 5px rgba(0,0,0,.05)}
+.cagr-bar select{padding:7px 12px;border-radius:8px;border:2px solid var(--bdr);
+  font-size:13px;font-weight:700;color:var(--navy);background:#fff;cursor:pointer;
+  font-family:inherit;transition:border-color .15s}
+.cagr-bar select:focus{outline:none;border-color:var(--accent)}
+.bear-sel{border-color:#e2a0a0!important;color:var(--red)!important}
+.base-sel{border-color:#7ec8a0!important;color:var(--green)!important}
+.bull-sel{border-color:#f0c060!important;color:var(--gold)!important}
 
 /* MILESTONE CARDS */
 .ms3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:26px}
@@ -120,22 +147,72 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 .bfill{height:100%;border-radius:6px;display:flex;align-items:center;
   padding-left:10px;font-size:10px;font-weight:700;color:#fff;white-space:nowrap}
 
-/* COMPARISON vs BFGIX */
-.cmpgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:26px}
-@media(max-width:700px){.cmpgrid{grid-template-columns:1fr}}
-.cmpc{background:#fff;border-radius:12px;border:1px solid var(--bdr);padding:18px 20px;
-  box-shadow:0 2px 6px rgba(0,0,0,.05)}
-.cmpc h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-bottom:12px}
+/* KV */
 .kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f4fa}
 .kv:last-child{border-bottom:none}
 .kk{font-size:12px;color:var(--mu)}.kval{font-size:12px;font-weight:700}
 
-/* DATA CONFIDENCE BANNER */
+/* CONFIDENCE BANNER */
 .conf-banner{background:var(--gl);border:2px solid #7ec8a0;border-radius:12px;
   padding:16px 20px;margin-bottom:26px;display:flex;align-items:flex-start;gap:14px}
 .conf-icon{font-size:28px;flex-shrink:0}
 .conf-banner h3{font-size:14px;font-weight:800;color:var(--green);margin-bottom:4px}
 .conf-banner p{font-size:12px;color:#2a5a3a;line-height:1.65}
+
+/* UPLOAD PANEL */
+.upload-panel{background:#fff;border-radius:14px;border:2px dashed var(--accent);
+  padding:24px 26px;margin-bottom:26px;box-shadow:0 2px 10px rgba(44,123,229,.08)}
+.upload-panel h3{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.upload-panel p{font-size:12px;color:var(--mu);margin-bottom:16px;line-height:1.6}
+.upload-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.upload-zone{flex:1;min-width:220px;border:2px dashed #c0d0e8;border-radius:10px;
+  padding:18px 16px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);position:relative}
+.upload-zone:hover{border-color:var(--accent);background:#eef4ff}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-zone .uz-icon{font-size:28px;margin-bottom:6px}
+.upload-zone .uz-label{font-size:12px;font-weight:700;color:var(--navy)}
+.upload-zone .uz-sub{font-size:11px;color:var(--mu);margin-top:2px}
+.upload-info{flex:1;min-width:220px}
+.upload-status{background:var(--bg);border-radius:8px;border:1px solid var(--bdr);
+  padding:12px 14px;font-size:12px;color:var(--mu);min-height:60px;line-height:1.6}
+.upload-status.loaded{background:var(--gl);border-color:#7ec8a0;color:#1a4a2a}
+.upload-status.error{background:var(--rl);border-color:#e2a0a0;color:var(--red)}
+.parsed-fields{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pf-item{background:var(--bg);border:1px solid var(--bdr);border-radius:7px;padding:8px 10px}
+.pf-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mu)}
+.pf-val{font-size:14px;font-weight:800;color:var(--green);margin-top:2px}
+.apply-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:9px 18px;
+  background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:12px;
+  font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
+.apply-btn:hover{background:#1a6bd4}
+.apply-btn:disabled{background:#a0b8d0;cursor:not-allowed}
+
+/* REDEMPTION TAB */
+.rdm-policy{background:var(--rl);border:2px solid #e2a0a0;border-radius:12px;
+  padding:16px 20px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px}
+.rdm-policy h3{font-size:14px;font-weight:800;color:var(--red);margin-bottom:6px}
+.rdm-policy ul{padding-left:16px}
+.rdm-policy ul li{font-size:12px;color:#6a1a1a;margin-bottom:5px;line-height:1.55}
+.rdm-policy ul li strong{color:var(--red)}
+
+.rdm-ctrl{background:#fff;border:1px solid var(--bdr);border-radius:12px;padding:18px 20px;
+  margin-bottom:22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  box-shadow:0 1px 5px rgba(0,0,0,.05)}
+.rdm-ctrl label{font-size:12px;font-weight:700;color:var(--navy);white-space:nowrap}
+.rdm-ctrl select{padding:8px 13px;border-radius:8px;border:2px solid #a090e0;
+  font-size:13px;font-weight:700;color:var(--pur);background:#fff;cursor:pointer;
+  font-family:inherit}
+.rdm-ctrl select:focus{outline:none;border-color:var(--pur)}
+.rdm-cap-note{background:var(--pl);border:1px solid #c4a0e0;border-radius:7px;
+  padding:8px 13px;font-size:11px;color:var(--pur);font-weight:600;margin-left:auto}
+@media(max-width:700px){.rdm-cap-note{margin-left:0}}
+
+.rdm-scgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:26px}
+@media(max-width:820px){.rdm-scgrid{grid-template-columns:1fr}}
+
+.rdm-warning{display:flex;align-items:flex-start;gap:8px;margin-top:12px;
+  background:#fff8f0;border:1px solid #f0d080;border-radius:7px;
+  padding:9px 12px;font-size:10px;color:#7a5010;font-weight:500;line-height:1.5}
 
 .disc{background:#fff8ed;border:1px solid #f0d080;border-radius:8px;
   padding:14px 18px;font-size:11px;color:#705010;line-height:1.65;margin-bottom:10px}
@@ -153,81 +230,45 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
   </div>
   <h1>Your SPRING Portfolio<br><span>3, 5 &amp; 7-Year Forecast</span></h1>
   <div class="hero-amount">$250,000</div>
-  <p>Now powered by verified data from the official SPRING February 2026 Fact Card. Four full return periods confirmed. Projections use the fund's own annualized track record as the base case.</p>
+  <p>Powered by the official SPRING February 2026 Fact Card. Adjust CAGR rates to recalculate all projections. Use the Redemption tab to model withdrawals under SPRING's 2.5%/quarter policy.</p>
   <div class="hstats">
     <div><div class="hl">Your Investment</div><div class="hv">$250,000</div><div class="hsb">Starting March 2026</div></div>
-    <div><div class="hl">3-Year Annualized</div><div class="hv">26.96%</div><div class="hsb">Base case rate (verified)</div></div>
-    <div><div class="hl">Since Inception CAGR</div><div class="hv">31.17%</div><div class="hsb">Nov 2022 → Feb 2026</div></div>
-    <div><div class="hl">Bear Rate</div><div class="hv">12.0%</div><div class="hsb">VC lower quartile / stress</div></div>
-    <div><div class="hl">Bull Rate</div><div class="hv">35.0%</div><div class="hsb">Inception CAGR + upside</div></div>
-    <div><div class="hl">SpaceX #1 Holding</div><div class="hv">~Top Position</div><div class="hsb">Includes xAI post-merger</div></div>
+    <div><div class="hl">3-Year Annualized</div><div class="hv">26.96%</div><div class="hsb">Base case (verified)</div></div>
+    <div><div class="hl">Inception CAGR</div><div class="hv">31.17%</div><div class="hsb">Nov 2022 → Feb 2026</div></div>
+    <div><div class="hl">Bear / Base / Bull</div><div class="hv">12 / 27 / 35%</div><div class="hsb">Adjustable below</div></div>
+    <div><div class="hl">Redemption Cap</div><div class="hv">2.5%/Qtr</div><div class="hsb">Max 10%/year · Board discretion</div></div>
   </div>
 </div>
 
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('proj',this)">📈 Projections</button>
+  <button class="tab-btn" onclick="switchTab('rdm',this)">💸 Redemption Calculator</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 1 — PROJECTIONS
+══════════════════════════════════════════ -->
+<div class="tab-panel active" id="tab-proj">
 <div class="main">
 
-<!-- DATA CONFIDENCE BANNER -->
+<!-- CONFIDENCE BANNER -->
 <div class="conf-banner" style="margin-top:4px">
   <div class="conf-icon">✅</div>
   <div>
-    <h3>Data Confidence Upgraded — Full Projection Now Possible</h3>
-    <p>The official SPRING February 2026 Fact Card confirms <strong>four verified return periods: 2022 (+14.94%), 2023 (+22.76%), 2024 (+15.83%), and 2025 (+38.79%)</strong>, plus a 3-year annualized return of <strong>26.96%</strong> and since-inception CAGR of <strong>31.17%</strong>. This is now sufficient to run a data-backed projection. The 3-year annualized CAGR (26.96%) is used as the Base Case rate — it is the most statistically defensible figure as it covers a full market cycle including a strong year (2025), a moderate year (2023), and a muted year (2024).</p>
+    <h3>Data Confidence — Full Projection Verified</h3>
+    <p>Four verified return periods: <strong>2022 (+14.94%), 2023 (+22.76%), 2024 (+15.83%), 2025 (+38.79%)</strong> — plus a verified 3-year annualized return of <strong>26.96%</strong> and inception CAGR of <strong>31.17%</strong>. Adjust the CAGR dropdowns below to recalculate all output sections simultaneously.</p>
   </div>
 </div>
 
-<!-- HISTORICAL PERFORMANCE -->
-<div class="st">Verified Historical Performance — SPRING Class I</div>
-<div class="tw"><table>
-  <thead>
-    <tr><th>Year</th><th>SPRING Return</th><th>Nasdaq Composite</th><th>vs. Nasdaq</th><th>Data Quality</th><th>Context</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>2022 (Nov–Dec)</td><td class="pos">+14.94%</td><td class="neg">−4.55%</td><td class="pos">+19.49pp</td><td><span class="badge bw">Partial Year</span></td><td class="mu">Strong start via discounted secondaries in down market</td></tr>
-    <tr><td>2023</td><td class="pos">+22.76%</td><td class="pos">+44.64%</td><td class="neg">−21.88pp</td><td><span class="badge bg2">Full Year ✓</span></td><td class="mu">Lagged Nasdaq AI surge; private marks slower to update</td></tr>
-    <tr><td>2024</td><td class="pos">+15.83%</td><td class="pos">+29.57%</td><td class="neg">−13.74pp</td><td><span class="badge bg2">Full Year ✓</span></td><td class="mu">Solid absolute return; private VC cycle normalizing</td></tr>
-    <tr><td>2025</td><td class="pos">+38.79%</td><td class="pos">+21.14%</td><td class="pos">+17.65pp</td><td><span class="badge bg2">Full Year ✓</span></td><td class="mu">Breakout year — AI portfolio names revalued upward</td></tr>
-    <tr><td>2026 (Jan–Feb)</td><td class="pos">+8.70%</td><td class="neg">−2.39%</td><td class="pos">+11.09pp</td><td><span class="badge bl">YTD Partial</span></td><td class="mu">Strong start; SpaceX/xAI merger completed Feb 2026</td></tr>
-    <tr style="font-weight:800"><td>3-Year Annualized</td><td class="pos">+26.96%</td><td class="mu">—</td><td class="mu">—</td><td><span class="badge bg2">Verified ✓</span></td><td class="mu">Used as Base Case projection rate</td></tr>
-    <tr style="font-weight:800"><td>Since Inception CAGR</td><td class="pos">+31.17%</td><td class="mu">—</td><td class="mu">—</td><td><span class="badge bg2">Verified ✓</span></td><td class="mu">Nov 2022 → Feb 2026 · Class I shares</td></tr>
-  </tbody>
-</table></div>
-
-<!-- RATE LEGEND -->
-<div class="st">Return Rate Assumptions</div>
-<div class="legend">
-  <div class="lchip">
-    <div class="ldot" style="background:var(--red)"></div>
-    <div><h4>🐻 Bear — 12%/yr</h4>
-    <p>VC market stress: higher rates persist, startup valuations compress, SPRING lags its own history. Reflects Cambridge VC lower-quartile outcomes. No SpaceX IPO uplift assumed.</p></div>
-  </div>
-  <div class="lchip">
-    <div class="ldot" style="background:var(--green)"></div>
-    <div><h4>📍 Base — 26.96%/yr</h4>
-    <p>SPRING's own verified 3-year annualized return (2023–2025). Covers a full mini-cycle including muted 2024 and strong 2025. Most statistically defensible rate. Includes SpaceX IPO boost in Year 1.</p></div>
-  </div>
-  <div class="lchip">
-    <div class="ldot" style="background:var(--gold)"></div>
-    <div><h4>🚀 Bull — 35%/yr</h4>
-    <p>Closer to fund's since-inception CAGR (31.17%) plus continued AI/SpaceX tailwinds. Assumes 2025-like outperformance persists. Optimistic but plausible given portfolio composition. SpaceX IPO boost included.</p></div>
-  </div>
-</div>
-
-<!-- SCENARIO CARDS -->
-<div class="st">Your $250,000 — 3, 5 &amp; 7-Year Projected Values</div>
-<div class="scgrid" id="scCards"></div>
-
-<!-- MILESTONE HIGHLIGHTS -->
-<div class="st">Key Milestones for Your $250,000</div>
-<div class="ms3" id="milestones"></div>
-
-<!-- SPX NOTE -->
+<!-- SPACEX TOP SECTION -->
 <div class="st">🚀 SpaceX — SPRING's #1 Holding &amp; Year-1 Catalyst</div>
 <div style="background:#fff;border-radius:12px;border:1px solid var(--bdr);padding:18px 22px;margin-bottom:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
     <div>
-      <h4 style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:10px">SpaceX is SPRING's Top Holding</h4>
-      <p style="font-size:12px;color:var(--mu);line-height:1.65;margin-bottom:10px">The fact card confirms SpaceX (which now includes the economic interest of xAI Holdings Corp. following their February 2, 2026 merger) is SPRING's <strong style="color:var(--tx)">#1 portfolio company</strong> by position. This makes SPRING uniquely well-positioned for a SpaceX IPO — similar to BFGIX, but via private VC exposure rather than secondary market shares.</p>
-      <p style="font-size:12px;color:var(--mu);line-height:1.65">Unlike BFGIX (where we know the exact 12.83% weight), SPRING's exact SpaceX position size is not disclosed in the fact card. The IPO boost applied below is therefore estimated at <strong style="color:var(--tx)">+8–10%</strong> of NAV — slightly more conservative than BFGIX's 11.3% given the larger, more diversified 2,000+ company portfolio.</p>
+      <h4 style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:10px">SpaceX is SPRING's #1 Portfolio Company</h4>
+      <p style="font-size:12px;color:var(--mu);line-height:1.65;margin-bottom:10px">SpaceX — which now includes xAI Holdings Corp. following their <strong style="color:var(--tx)">February 2, 2026 merger</strong> — is SPRING's confirmed top holding. This positions SPRING well for a SpaceX IPO alongside BFGIX, via private VC exposure.</p>
+      <p style="font-size:12px;color:var(--mu);line-height:1.65">SPRING's exact SpaceX weight is undisclosed. The Year-1 IPO boost is estimated at <strong style="color:var(--tx)">~9% of NAV</strong> (~$22,500 on your $250K), applied to Base and Bull scenarios only.</p>
     </div>
     <div style="background:var(--bg);border-radius:8px;padding:16px">
       <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--accent);margin-bottom:12px">SPRING Top 5 Holdings (Dec 2025)</div>
@@ -236,132 +277,507 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
       <div class="kv"><span class="kk">Crusoe Inc. (AI Infra)</span><span class="kval">#3 Position</span></div>
       <div class="kv"><span class="kk">Confidential (Neo-bank)</span><span class="kval">#4 Position</span></div>
       <div class="kv"><span class="kk">Confidential (AI Research)</span><span class="kval">#5 Position</span></div>
-      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--bdr)">
-        <div style="font-size:11px;color:var(--mu)">Fund: 70% IT · 102 managers · 2,000+ companies · $5.9B AUM</div>
-      </div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--bdr);font-size:11px;color:var(--mu)">70% IT · 102 managers · 2,000+ companies · $5.9B AUM</div>
     </div>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px" id="spxImpact"></div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px" id="spxImpact"></div>
 </div>
 
-<!-- YEAR-BY-YEAR TABLE -->
+<!-- UPLOAD PANEL -->
+<div class="st">📄 Load Latest Fact Sheet or Financial Update</div>
+<div class="upload-panel">
+  <h3>Update with New Fund Data</h3>
+  <p>Upload the latest SPRING Fact Card to extract updated performance figures and auto-update the Base Case CAGR. Files are processed locally — nothing is uploaded to any server.</p>
+  <div class="upload-row">
+    <div class="upload-zone" id="dropZone">
+      <input type="file" id="fileInput" accept=".pdf,.txt,.md,.csv" onchange="handleFileUpload(this.files[0])">
+      <div class="uz-icon">📂</div>
+      <div class="uz-label">Drop file here or click to browse</div>
+      <div class="uz-sub">PDF · TXT · MD · CSV</div>
+    </div>
+    <div class="upload-info">
+      <div class="upload-status" id="uploadStatus">No file loaded — currently using February 2026 Fact Card data.</div>
+      <div class="parsed-fields" id="parsedFields" style="display:none">
+        <div class="pf-item"><div class="pf-label">3-Yr CAGR Found</div><div class="pf-val" id="pf-cagr">—</div></div>
+        <div class="pf-item"><div class="pf-label">Inception CAGR</div><div class="pf-val" id="pf-incept">—</div></div>
+        <div class="pf-item"><div class="pf-label">Latest Year Return</div><div class="pf-val" id="pf-yr">—</div></div>
+        <div class="pf-item"><div class="pf-label">NAV Per Share</div><div class="pf-val" id="pf-nav">—</div></div>
+      </div>
+      <button class="apply-btn" id="applyBtn" onclick="applyParsedData()" disabled>✓ Apply to Projections</button>
+    </div>
+  </div>
+</div>
+
+<!-- RATE ASSUMPTIONS -->
+<div class="st">Return Rate Assumptions</div>
+<div class="legend">
+  <div class="lchip"><div class="ldot" style="background:var(--red)"></div>
+    <div><h4>🐻 Bear — adjustable</h4><p>VC market stress. Default 12% (Cambridge VC lower quartile). No SpaceX IPO uplift assumed.</p></div></div>
+  <div class="lchip"><div class="ldot" style="background:var(--green)"></div>
+    <div><h4>📍 Base — adjustable</h4><p>Default 27% ≈ SPRING's verified 3-yr CAGR (26.96%). SpaceX IPO ~+9% NAV boost in Year 1.</p></div></div>
+  <div class="lchip"><div class="ldot" style="background:var(--gold)"></div>
+    <div><h4>🚀 Bull — adjustable</h4><p>Default 35% — near inception CAGR plus AI/SpaceX tailwinds. SpaceX IPO boost in Year 1.</p></div></div>
+</div>
+
+<!-- CAGR CONTROL BAR -->
+<div class="st">Your $250,000 — 3, 5 &amp; 7-Year Projected Values</div>
+<div class="cagr-bar">
+  <span style="font-size:13px;font-weight:800;color:var(--navy)">Adjust CAGR — Recalculates All Output:</span>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span style="font-size:12px;font-weight:700;color:var(--red)">🐻 Bear</span>
+    <select id="bearRate" class="bear-sel" onchange="recalcAll()"></select>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span style="font-size:12px;font-weight:700;color:var(--green)">📍 Base</span>
+    <select id="baseRate" class="base-sel" onchange="recalcAll()"></select>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span style="font-size:12px;font-weight:700;color:var(--gold)">🚀 Bull</span>
+    <select id="bullRate" class="bull-sel" onchange="recalcAll()"></select>
+  </div>
+  <span style="font-size:11px;color:var(--mu);margin-left:auto">All sections below update simultaneously</span>
+</div>
+
+<!-- SCENARIO CARDS -->
+<div class="scgrid" id="scCards"></div>
+
+<!-- MILESTONES — above Verified Performance -->
+<div class="st">Key Milestones for Your $250,000</div>
+<div class="ms3" id="milestones"></div>
+
+<!-- YEAR TABLE -->
 <div class="st">Year-by-Year Projection Table — All Scenarios</div>
 <div class="tw"><table>
-  <thead>
-    <tr><th>Year</th><th>🐻 Bear (12%)</th><th>📍 Base (26.96%)</th><th>🚀 Bull (35%)</th><th>Base Gain $</th><th>Base Gain %</th></tr>
-  </thead>
+  <thead><tr><th>Year</th><th id="th-bear">🐻 Bear</th><th id="th-base">📍 Base</th><th id="th-bull">🚀 Bull</th><th>Base Gain $</th><th>Base Gain %</th></tr></thead>
   <tbody id="yearTbl"></tbody>
 </table></div>
 
 <!-- BAR CHART -->
-<div class="st">Visual Growth Comparison — $250,000</div>
+<div class="st">Visual Growth Comparison</div>
 <div class="barsec">
   <h4>Projected Portfolio Value Over Time</h4>
-  <p>All three scenarios · SpaceX IPO Year-1 boost included in Base &amp; Bull</p>
+  <p id="barDesc">All three scenarios · SpaceX IPO Year-1 boost in Base &amp; Bull</p>
   <div id="bars"></div>
 </div>
 
-<!-- SIDE BY SIDE WITH BFGIX -->
+<!-- COMBINED PORTFOLIO -->
 <div class="st">Portfolio Comparison — SPRING $250K vs. BFGIX $375K (Base Case)</div>
 <div class="tw"><table>
-  <thead>
-    <tr><th>Horizon</th><th>SPRING $250K (26.96%)</th><th>BFGIX $375K (20.7%)</th><th>Combined Total</th><th>Combined Gain</th></tr>
-  </thead>
+  <thead><tr><th>Horizon</th><th id="th-spring-comb">SPRING $250K</th><th>BFGIX $375K (20.7%)</th><th>Combined Total</th><th>Combined Gain</th></tr></thead>
   <tbody id="combinedTbl"></tbody>
 </table></div>
 
-<div class="disc"><strong>⚠ Disclaimer:</strong> All projections are hypothetical illustrations for informational purposes only. Performance data sourced from the official SPRING February 2026 Fact Card (Class I shares). The 26.96% base rate reflects the fund's verified 3-year annualized return (2023–2025) — a period that included unusually strong VC conditions, particularly in 2025. The SpaceX IPO boost is estimated at ~9% of NAV given SPRING's confirmed #1 position in SpaceX/xAI, but the exact weighting is not publicly disclosed. Past performance does not guarantee future results. SPRING is illiquid with quarterly redemption limits of 2.5% of shares. This is not investment advice. Consult a licensed financial advisor before making investment decisions.</div>
-<div class="foot">SPRING $250,000 Portfolio Forecast · March 2026 · Data: SPRING February 2026 Official Fact Card · Class I Shares</div>
+<!-- VERIFIED PERFORMANCE — bottom per REV01 -->
+<div class="st">Verified Historical Performance — SPRING Class I</div>
+<div class="tw"><table>
+  <thead><tr><th>Year</th><th>SPRING Return</th><th>Nasdaq Composite</th><th>vs. Nasdaq</th><th>Data Quality</th><th>Context</th></tr></thead>
+  <tbody>
+    <tr><td>2022 (Nov–Dec)</td><td class="pos">+14.94%</td><td class="neg">−4.55%</td><td class="pos">+19.49pp</td><td><span class="badge bw">Partial Year</span></td><td class="mu">Strong start via discounted secondaries</td></tr>
+    <tr><td>2023</td><td class="pos">+22.76%</td><td class="pos">+44.64%</td><td class="neg">−21.88pp</td><td><span class="badge bg2">Full Year ✓</span></td><td class="mu">Lagged Nasdaq AI surge; private marks delayed</td></tr>
+    <tr><td>2024</td><td class="pos">+15.83%</td><td class="pos">+29.57%</td><td class="neg">−13.74pp</td><td><span class="badge bg2">Full Year ✓</span></td><td class="mu">Solid absolute return; VC cycle normalizing</td></tr>
+    <tr><td>2025</td><td class="pos">+38.79%</td><td class="pos">+21.14%</td><td class="pos">+17.65pp</td><td><span class="badge bg2">Full Year ✓</span></td><td class="mu">Breakout year — AI portfolio revalued</td></tr>
+    <tr><td>2026 (Jan–Feb YTD)</td><td class="pos">+8.70%</td><td class="neg">−2.39%</td><td class="pos">+11.09pp</td><td><span class="badge bl">YTD Partial</span></td><td class="mu">Strong start; SpaceX/xAI merger Feb 2026</td></tr>
+    <tr style="font-weight:800"><td>3-Year Annualized</td><td class="pos">+26.96%</td><td class="mu">—</td><td class="mu">—</td><td><span class="badge bg2">Verified ✓</span></td><td class="mu">Base Case projection rate</td></tr>
+    <tr style="font-weight:800"><td>Since Inception CAGR</td><td class="pos">+31.17%</td><td class="mu">—</td><td class="mu">—</td><td><span class="badge bg2">Verified ✓</span></td><td class="mu">Nov 2022 → Feb 2026</td></tr>
+  </tbody>
+</table></div>
+
+<div class="disc"><strong>⚠ Disclaimer:</strong> Hypothetical projections for informational purposes only. Data sourced from SPRING February 2026 Fact Card (Class I shares). SpaceX IPO boost estimated at ~9% of NAV — exact position size not publicly disclosed. Past performance does not guarantee future results. SPRING is illiquid with quarterly redemption limits. This is not investment advice.</div>
+<div class="foot">SPRING $250,000 Portfolio Forecast · March 2026 · SPRING February 2026 Official Fact Card · Class I Shares</div>
+</div>
+</div><!-- end tab-proj -->
+
+<!-- ══════════════════════════════════════════
+     TAB 2 — REDEMPTION CALCULATOR
+══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-rdm">
+<div class="main">
+
+<!-- POLICY BANNER -->
+<div class="rdm-policy" style="margin-top:4px">
+  <div style="font-size:30px;flex-shrink:0">🔒</div>
+  <div>
+    <h3>SPRING Redemption Policy — Key Constraints</h3>
+    <ul>
+      <li><strong>Quarterly cap:</strong> Maximum 2.5% of the Fund's total outstanding shares per quarter</li>
+      <li><strong>Annual effective max:</strong> ~10% of your position per year (4 quarters × 2.5%)</li>
+      <li><strong>Board discretion:</strong> The Board of Trustees can modify, suspend, or terminate the redemption plan entirely at any time</li>
+      <li><strong>No obligation:</strong> The Fund is not obligated to redeem any shares — approval is at the Board's discretion</li>
+      <li><strong>Monthly subscriptions:</strong> You can invest monthly, but redemptions are quarterly only</li>
+      <li><strong>Long-term hold:</strong> Full exit from a large position requires multiple years of quarterly redemptions</li>
+    </ul>
+  </div>
 </div>
 
+<!-- REDEMPTION CONTROLS -->
+<div class="st">Redemption Calculator — $250,000 Starting Balance</div>
+<div class="rdm-ctrl">
+  <span style="font-size:13px;font-weight:800;color:var(--navy)">Desired Annual Withdrawal:</span>
+  <div style="display:flex;align-items:center;gap:8px">
+    <select id="wdPct" onchange="recalcRdm()"></select>
+    <span style="font-size:12px;color:var(--mu)">of portfolio per year</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;margin-left:12px">
+    <span style="font-size:12px;font-weight:700;color:var(--navy)">Growth Rate:</span>
+    <select id="rdmRate" style="padding:8px 13px;border-radius:8px;border:2px solid #7ec8a0;font-size:13px;font-weight:700;color:var(--green);background:#fff;cursor:pointer;font-family:inherit" onchange="recalcRdm()"></select>
+  </div>
+  <div class="rdm-cap-note" id="rdmCapNote">Policy cap: 2.5%/qtr → max 10%/yr</div>
+</div>
+
+<!-- REDEMPTION SCENARIO CARDS -->
+<div class="rdm-scgrid" id="rdmCards"></div>
+
+<!-- REDEMPTION YEAR TABLE -->
+<div class="st">Year-by-Year Redemption Detail</div>
+<div class="tw"><table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Start Balance</th>
+      <th>Growth Added</th>
+      <th>Requested Withdrawal</th>
+      <th>Actual Withdrawal (Policy Cap)</th>
+      <th>End Balance</th>
+      <th>Cumulative Withdrawn</th>
+    </tr>
+  </thead>
+  <tbody id="rdmYearTbl"></tbody>
+</table></div>
+
+<!-- REDEMPTION BAR CHART -->
+<div class="st">Balance vs. Cumulative Withdrawals Over Time</div>
+<div class="barsec">
+  <h4>Portfolio Balance Remaining vs. Total Withdrawn</h4>
+  <p id="rdmBarDesc">Based on selected annual withdrawal rate and growth rate</p>
+  <div id="rdmBars"></div>
+</div>
+
+<div class="disc"><strong>⚠ Redemption Policy Note:</strong> This calculator models SPRING's 2.5%/quarter (10%/year effective maximum) redemption cap as stated in the February 2026 Fact Card. If your desired withdrawal exceeds the annual cap, the actual withdrawal is limited to 10% of the beginning-of-year balance. The remaining balance continues to compound at the selected growth rate. Board suspension of redemptions is not modeled — in that scenario, withdrawals could be zero regardless of the cap. This is not financial advice. Consult your advisor and the full SPRING Prospectus before making redemption decisions.</div>
+<div class="foot">SPRING Redemption Calculator · March 2026 · Policy: 2.5% of outstanding shares per quarter · Board discretion applies</div>
+</div>
+</div><!-- end tab-rdm -->
+
 <script>
+// ─── CONSTANTS ───────────────────────────────────────────────────
 const INIT=250000, BFGIX_INIT=375000, START=2026;
-// SpaceX IPO: SPRING's weight undisclosed; est ~9% vs BFGIX's 12.83%
 const SPX_BOOST=0.09;
+const MAX_ANNUAL_WD=0.10; // 2.5%/qtr × 4 = 10% per year hard cap per policy
 
-const sc=[
-  {key:'bear',emoji:'🐻',label:'Bear Market',sub:'VC stress scenario',rate:0.12,cls:'bear',color:'#b83232',bar:'#d95050',spx:false},
-  {key:'base',emoji:'📍',label:'Base Case', sub:'3-yr verified CAGR',rate:0.2696,cls:'base',color:'#148a4e',bar:'#1fa85e',spx:true},
-  {key:'bull',emoji:'🚀',label:'Bull Market',sub:'AI/SpaceX tailwinds',rate:0.35, cls:'bull',color:'#c47c0a',bar:'#d4960a',spx:true}
-];
-
+// ─── HELPERS ─────────────────────────────────────────────────────
 const C=n=>'$'+Math.round(n).toLocaleString();
 const S=n=>n>=1e6?'$'+(n/1e6).toFixed(2)+'M':'$'+Math.round(n/1000)+'K';
-const gain=v=>{const g=v-INIT,p=((g/INIT)*100).toFixed(1);return{s:(g>=0?'+':'')+C(g),pct:(g>=0?'+':'')+p+'%',cls:g>=0?'up':'dn'}};
+const gain=(v,i)=>{const g=v-(i||INIT),p=((g/(i||INIT))*100).toFixed(1);
+  return{s:(g>=0?'+':'')+C(g),pct:(g>=0?'+':'')+p+'%',cls:g>=0?'up':'dn'}};
 const proj=(rate,spx,yrs)=>{let v=INIT;for(let y=1;y<=yrs;y++){v*=(1+rate);if(y===1&&spx)v*=(1+SPX_BOOST);}return v;};
+const getRates=()=>({
+  bear:parseInt(document.getElementById('bearRate').value)/100,
+  base:parseInt(document.getElementById('baseRate').value)/100,
+  bull:parseInt(document.getElementById('bullRate').value)/100
+});
 
-// SCENARIO CARDS
-document.getElementById('scCards').innerHTML=sc.map(s=>{
-  const v3=proj(s.rate,s.spx,3),v5=proj(s.rate,s.spx,5),v7=proj(s.rate,s.spx,7);
+// ─── BUILD DROPDOWNS ─────────────────────────────────────────────
+function buildSel(id,def,min,max){
+  const s=document.getElementById(id); s.innerHTML='';
+  for(let p=min;p<=max;p++){const o=document.createElement('option');
+    o.value=p;o.textContent=p+'%/yr';if(p===def)o.selected=true;s.appendChild(o);}
+}
+buildSel('bearRate',12,1,30);
+buildSel('baseRate',27,5,60);
+buildSel('bullRate',35,10,70);
+
+// Withdrawal % dropdown: 1% to 25%
+function buildWdSel(){
+  const s=document.getElementById('wdPct'); s.innerHTML='';
+  for(let p=1;p<=25;p++){const o=document.createElement('option');
+    o.value=p;
+    o.textContent=p+'% per year'+(p>10?' ⚠ Exceeds policy cap':'');
+    if(p===5)o.selected=true;s.appendChild(o);}
+}
+buildWdSel();
+
+// Redemption growth rate dropdown
+function buildRdmRateSel(){
+  const s=document.getElementById('rdmRate'); s.innerHTML='';
+  const opts=[{v:12,l:'🐻 Bear (12%)'},{v:27,l:'📍 Base (27%)'},{v:35,l:'🚀 Bull (35%)'}];
+  opts.forEach((o,i)=>{const el=document.createElement('option');
+    el.value=o.v;el.textContent=o.l;if(i===1)el.selected=true;s.appendChild(el);});
+}
+buildRdmRateSel();
+
+// ─── MAIN RECALC (PROJECTIONS TAB) ───────────────────────────────
+function recalcAll(){
+  const {bear,base,bull}=getRates();
+  const sc=[
+    {key:'bear',emoji:'🐻',label:'Bear Market',sub:'VC stress scenario',rate:bear,cls:'bear',color:'#b83232',bar:'#d95050',spx:false},
+    {key:'base',emoji:'📍',label:'Base Case', sub:'Verified 3-yr CAGR',rate:base,cls:'base',color:'#148a4e',bar:'#1fa85e',spx:true},
+    {key:'bull',emoji:'🚀',label:'Bull Market',sub:'AI/SpaceX tailwinds',rate:bull,cls:'bull',color:'#c47c0a',bar:'#d4960a',spx:true}
+  ];
   const spxDol=INIT*SPX_BOOST;
-  return`<div class="sc ${s.cls}">
-    <div class="sch"><div class="scl">${s.emoji} ${s.label}</div>
-    <div style="font-size:11px;color:var(--mu);margin-top:2px">${s.sub}</div>
-    <div class="scr">${(s.rate*100).toFixed(2)}%/yr</div></div>
-    <div class="scb">${[[3,v3],[5,v5],[7,v7]].map(([yr,v])=>{const g=gain(v);return`
-    <div class="hr"><div><div class="hyr">${yr}-Year Horizon</div><div class="hdt">${START+yr}</div></div>
-    <div><div class="hval">${S(v)}</div><div class="hg ${g.cls}">${g.s} &middot; ${g.pct}</div></div></div>`}).join('')}
-    ${s.spx
-      ?`<div class="spx-strip">🚀 SpaceX IPO est. adds <strong>~${C(spxDol)}</strong> in Year 1</div>`
-      :`<div class="spx-strip" style="background:var(--rl);border-color:#e8b4b4;color:var(--red)">🐻 Bear: no SpaceX IPO uplift assumed</div>`}
-    </div></div>`;
-}).join('');
 
-// MILESTONES
-const baseV7=proj(0.2696,true,7),bullV7=proj(0.35,true,7),spxBoost=INIT*SPX_BOOST;
-document.getElementById('milestones').innerHTML=[
-  {icon:'📍',label:'Base Case — 7 Years',val:baseV7,sub:'26.96%/yr · 2033'},
-  {icon:'🚀',label:'Bull Case — 7 Years',val:bullV7,sub:'35%/yr · Full upside'},
-  {icon:'💜',label:'SpaceX IPO — Est. Boost',val:spxBoost,sub:'~9% of $250K added in Year 1'},
-].map(m=>`<div class="msc"><div class="msi">${m.icon}</div><div class="msl">${m.label}</div>
-<div class="msv">${C(m.val)}</div><div class="mss">${m.sub}</div></div>`).join('');
+  // Update table headers
+  document.getElementById('th-bear').textContent='🐻 Bear ('+Math.round(bear*100)+'%)';
+  document.getElementById('th-base').textContent='📍 Base ('+Math.round(base*100)+'%)';
+  document.getElementById('th-bull').textContent='🚀 Bull ('+Math.round(bull*100)+'%)';
+  document.getElementById('th-spring-comb').textContent='SPRING $250K ('+(Math.round(base*100))+'%)';
 
-// SPX IMPACT
-document.getElementById('spxImpact').innerHTML=sc.filter(s=>s.spx).map(s=>{
-  const withSpx=proj(s.rate,true,1),withoutSpx=proj(s.rate,false,1),diff=withSpx-withoutSpx;
-  return`<div style="background:var(--bg);border-radius:8px;padding:14px 16px">
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:${s.color};margin-bottom:10px">${s.emoji} ${s.label} · Year 1</div>
-    <div class="kv"><span class="kk">Without IPO</span><span class="kval">${C(withoutSpx)}</span></div>
-    <div class="kv"><span class="kk">With SpaceX IPO</span><span class="kval" style="color:${s.color}">${C(withSpx)}</span></div>
-    <div class="kv" style="border-top:2px solid var(--bdr);margin-top:4px;padding-top:8px">
-      <span style="font-weight:800;font-size:12px;color:var(--pur)">🚀 IPO adds</span>
-      <span style="font-size:15px;font-weight:900;color:var(--pur)">+${C(diff)}</span>
-    </div></div>`;
-}).join('');
+  // SCENARIO CARDS
+  document.getElementById('scCards').innerHTML=sc.map(s=>{
+    const v3=proj(s.rate,s.spx,3),v5=proj(s.rate,s.spx,5),v7=proj(s.rate,s.spx,7);
+    return`<div class="sc ${s.cls}">
+      <div class="sch"><div class="scl">${s.emoji} ${s.label}</div>
+      <div style="font-size:11px;color:var(--mu);margin-top:2px">${s.sub}</div>
+      <div class="scr">${Math.round(s.rate*100)}%/yr</div></div>
+      <div class="scb">
+        ${[[3,v3],[5,v5],[7,v7]].map(([yr,v])=>{const g=gain(v);return`
+        <div class="hr"><div><div class="hyr">${yr}-Year Horizon</div><div class="hdt">${START+yr}</div></div>
+        <div><div class="hval">${S(v)}</div><div class="hg ${g.cls}">${g.s} &middot; ${g.pct}</div></div></div>`}).join('')}
+        ${s.spx
+          ?`<div class="spx-strip">🚀 SpaceX IPO est. adds <strong>~${C(spxDol)}</strong> in Year 1</div>`
+          :`<div class="spx-strip" style="background:var(--rl);border-color:#e8b4b4;color:var(--red)">🐻 Bear: no SpaceX IPO uplift assumed</div>`}
+      </div></div>`;
+  }).join('');
 
-// YEAR TABLE
-document.getElementById('yearTbl').innerHTML=Array.from({length:7},(_,i)=>i+1).map(yr=>{
-  const vBear=proj(0.12,false,yr),vBase=proj(0.2696,true,yr),vBull=proj(0.35,true,yr);
-  const g=gain(vBase),key=[3,5,7].includes(yr);
-  return`<tr ${key?'style="font-weight:700"':''}><td>${START+yr} (Yr ${yr})${yr===1?' <span style="font-size:9px;background:var(--pl);color:var(--pur);padding:1px 5px;border-radius:3px;font-weight:700">SpaceX IPO</span>':''}${key?' ⭐':''}</td>
-  <td class="neg">${C(vBear)}</td><td class="pos">${C(vBase)}</td><td style="color:var(--gold);font-weight:700">${C(vBull)}</td>
-  <td class="pos">${g.s}</td><td class="pos">${g.pct}</td></tr>`;
-}).join('');
+  // MILESTONES
+  const bv7=proj(base,true,7),bul7=proj(bull,true,7);
+  document.getElementById('milestones').innerHTML=[
+    {icon:'📍',label:'Base Case — 7 Years',val:bv7,sub:Math.round(base*100)+'%/yr · '+( START+7)},
+    {icon:'🚀',label:'Bull Case — 7 Years', val:bul7,sub:Math.round(bull*100)+'%/yr · Full upside'},
+    {icon:'💜',label:'SpaceX IPO — Est. Boost',val:INIT*SPX_BOOST,sub:'~9% of $250K in Year 1'},
+  ].map(m=>`<div class="msc"><div class="msi">${m.icon}</div><div class="msl">${m.label}</div>
+  <div class="msv">${C(m.val)}</div><div class="mss">${m.sub}</div></div>`).join('');
 
-// BAR CHART
-const maxVal=proj(0.35,true,7);
-document.getElementById('bars').innerHTML=[3,5,7].map(yr=>`
-<div class="bg-group">
-  <div class="bg-lbl">${yr}-Year Horizon (${START+yr})</div>
-  ${sc.map(s=>{const v=proj(s.rate,s.spx,yr),pct=Math.min((v/maxVal)*100,100),g=gain(v);
-    return`<div class="bi"><div class="bm"><span class="bln">${s.emoji} ${s.label} (${(s.rate*100).toFixed(0)}%/yr)</span>
-    <span class="bnum" style="color:${s.color}">${C(v)} &middot; ${g.pct}</span></div>
-    <div class="btrack"><div class="bfill" style="width:${pct}%;background:${s.bar}">${S(v)}</div></div></div>`;}).join('')}
-</div>`).join('');
+  // SPX IMPACT
+  document.getElementById('spxImpact').innerHTML=sc.filter(s=>s.spx).map(s=>{
+    const w=proj(s.rate,true,1),wo=proj(s.rate,false,1),d=w-wo;
+    return`<div style="background:var(--bg);border-radius:8px;padding:14px 16px">
+      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:${s.color};margin-bottom:10px">${s.emoji} ${s.label} · Year 1</div>
+      <div class="kv"><span class="kk">Without SpaceX IPO</span><span class="kval">${C(wo)}</span></div>
+      <div class="kv"><span class="kk">With SpaceX IPO (~$1.5T)</span><span class="kval" style="color:${s.color}">${C(w)}</span></div>
+      <div class="kv" style="border-top:2px solid var(--bdr);margin-top:4px;padding-top:8px">
+        <span style="font-weight:800;font-size:12px;color:var(--pur)">🚀 IPO adds</span>
+        <span style="font-size:15px;font-weight:900;color:var(--pur)">+${C(d)}</span>
+      </div></div>`;
+  }).join('');
 
-// COMBINED TABLE (SPRING base + BFGIX base)
-const BFGIX_RATE=0.207, BFGIX_SPX=0.1283*(1500/800-1); // BFGIX SpaceX boost
-document.getElementById('combinedTbl').innerHTML=[3,5,7].map(yr=>{
-  const spring=proj(0.2696,true,yr);
-  let bfgix=BFGIX_INIT;
-  for(let y=1;y<=yr;y++){bfgix*=(1+BFGIX_RATE);if(y===1)bfgix*=(1+BFGIX_SPX);}
-  const total=spring+bfgix,initTotal=INIT+BFGIX_INIT,gTotal=total-initTotal,gpct=((gTotal/initTotal)*100).toFixed(1);
-  return`<tr style="${[3,5,7].includes(yr)?'font-weight:700':''}">
-    <td>${yr}-Year (${START+yr})</td>
-    <td class="pos">${C(spring)}</td><td class="pos">${C(bfgix)}</td>
-    <td style="color:var(--pur);font-weight:800">${C(total)}</td>
-    <td class="pos">+${C(gTotal)} (+${gpct}%)</td></tr>`;
-}).join('');
+  // YEAR TABLE
+  document.getElementById('yearTbl').innerHTML=Array.from({length:7},(_,i)=>i+1).map(yr=>{
+    const vB=proj(bear,false,yr),vBa=proj(base,true,yr),vBu=proj(bull,true,yr);
+    const g=gain(vBa),key=[3,5,7].includes(yr);
+    return`<tr ${key?'style="font-weight:700"':''}>
+      <td>${START+yr} (Yr ${yr})${yr===1?' <span style="font-size:9px;background:var(--pl);color:var(--pur);padding:1px 5px;border-radius:3px;font-weight:700">SpaceX IPO</span>':''}${key?' ⭐':''}</td>
+      <td class="neg">${C(vB)}</td><td class="pos">${C(vBa)}</td>
+      <td style="color:var(--gold);font-weight:700">${C(vBu)}</td>
+      <td class="pos">${g.s}</td><td class="pos">${g.pct}</td></tr>`;
+  }).join('');
+
+  // BAR CHART
+  const maxV=proj(bull,true,7);
+  document.getElementById('bars').innerHTML=[3,5,7].map(yr=>`
+  <div class="bg-group"><div class="bg-lbl">${yr}-Year Horizon (${START+yr})</div>
+  ${sc.map(s=>{const v=proj(s.rate,s.spx,yr),p=Math.min((v/maxV)*100,100),g=gain(v);
+    return`<div class="bi"><div class="bm">
+      <span class="bln">${s.emoji} ${s.label} (${Math.round(s.rate*100)}%/yr)</span>
+      <span class="bnum" style="color:${s.color}">${C(v)} &middot; ${g.pct}</span></div>
+      <div class="btrack"><div class="bfill" style="width:${p}%;background:${s.bar}">${S(v)}</div></div>
+    </div>`;}).join('')}</div>`).join('');
+
+  // COMBINED TABLE
+  const BFGIX_RATE=0.207,BFGIX_SPX=0.1283*(1500/800-1);
+  document.getElementById('combinedTbl').innerHTML=[3,5,7].map(yr=>{
+    const spring=proj(base,true,yr);
+    let bfgix=BFGIX_INIT;
+    for(let y=1;y<=yr;y++){bfgix*=(1+BFGIX_RATE);if(y===1)bfgix*=(1+BFGIX_SPX);}
+    const total=spring+bfgix,it=INIT+BFGIX_INIT,gt=total-it,gp=((gt/it)*100).toFixed(1);
+    return`<tr style="font-weight:700"><td>${yr}-Year (${START+yr})</td>
+      <td class="pos">${C(spring)}</td><td class="pos">${C(bfgix)}</td>
+      <td style="color:var(--pur);font-weight:800">${C(total)}</td>
+      <td class="pos">+${C(gt)} (+${gp}%)</td></tr>`;
+  }).join('');
+}
+
+// ─── REDEMPTION CALCULATOR ────────────────────────────────────────
+function recalcRdm(){
+  const wdPctAnnual=parseInt(document.getElementById('wdPct').value)/100;
+  const growthRate=parseInt(document.getElementById('rdmRate').value)/100;
+  const exceedsCap=wdPctAnnual>MAX_ANNUAL_WD;
+  const actualAnnualWdPct=Math.min(wdPctAnnual,MAX_ANNUAL_WD);
+
+  // Update cap note
+  const note=document.getElementById('rdmCapNote');
+  if(exceedsCap){
+    note.style.background='#fdecea';note.style.borderColor='#e2a0a0';note.style.color='var(--red)';
+    note.textContent='⚠ Requested '+Math.round(wdPctAnnual*100)+'% exceeds 10%/yr policy cap — limited to 10%';
+  } else {
+    note.style.background='var(--pl)';note.style.borderColor='#c4a0e0';note.style.color='var(--pur)';
+    note.textContent='Policy cap: 2.5%/qtr → max 10%/yr · Your request: '+Math.round(wdPctAnnual*100)+'% ✓ Within cap';
+  }
+
+  // Simulate 7 years quarterly
+  // Each quarter: apply 1/4 of annual growth, then redeem min(requested, 2.5% of balance)
+  const QGROWTH=(1+growthRate)**0.25-1;
+  const qWdPct=actualAnnualWdPct/4; // per quarter actual withdrawal rate
+
+  let balance=INIT;
+  let cumWd=0;
+  const yearData=[];
+
+  for(let yr=1;yr<=7;yr++){
+    const startBal=balance;
+    let yrGrowth=0, yrWd=0;
+    for(let q=0;q<4;q++){
+      const growth=balance*QGROWTH;
+      balance+=growth;
+      yrGrowth+=growth;
+      const wd=balance*0.025; // 2.5% of balance each quarter (policy cap per quarter)
+      // Only withdraw what's requested (up to cap)
+      const requestedQWd=balance*(wdPctAnnual/4);
+      const actualQWd=Math.min(requestedQWd,wd);
+      balance-=actualQWd;
+      yrWd+=actualQWd;
+      cumWd+=actualQWd;
+    }
+    yearData.push({yr,startBal,growth:yrGrowth,requested:startBal*wdPctAnnual,
+      actualWd:yrWd,endBal:balance,cumWd});
+  }
+
+  // REDEMPTION SCENARIO CARDS — 3/5/7 year snapshots
+  const horizons=[
+    {yr:3,label:'3-Year',date:START+3},
+    {yr:5,label:'5-Year',date:START+5},
+    {yr:7,label:'7-Year',date:START+7}
+  ];
+  const totalWdAtHr=yr=>yearData.slice(0,yr).reduce((s,d)=>s+d.actualWd,0);
+  const balAtHr=yr=>yearData[yr-1].endBal;
+
+  document.getElementById('rdmCards').innerHTML=horizons.map(h=>{
+    const bal=balAtHr(h.yr),wd=totalWdAtHr(h.yr),total=bal+wd;
+    const g=gain(bal);
+    const wdPctOfInit=((wd/INIT)*100).toFixed(1);
+    const recov=((total/INIT-1)*100).toFixed(1);
+    return`<div class="sc rdm">
+      <div class="sch">
+        <div class="scl">💸 ${h.label} Horizon</div>
+        <div style="font-size:11px;color:var(--mu);margin-top:2px">${h.date} · ${Math.round(wdPctAnnual*100)}%/yr requested · ${Math.round(growthRate*100)}% growth</div>
+        <div class="scr">${h.yr} Years</div>
+      </div>
+      <div class="scb">
+        <div class="hr">
+          <div><div class="hyr">Remaining Balance</div><div class="hdt">After all withdrawals</div></div>
+          <div><div class="hval">${S(bal)}</div><div class="hg ${g.cls}">${g.s} &middot; ${g.pct}</div></div>
+        </div>
+        <div class="hr">
+          <div><div class="hyr">Total Withdrawn</div><div class="hdt">${h.yr} years of quarterly redemptions</div></div>
+          <div><div class="hval" style="color:var(--gold)">${S(wd)}</div>
+          <div class="hsub2">${wdPctOfInit}% of original investment</div></div>
+        </div>
+        <div class="hr">
+          <div><div class="hyr">Total Value (Bal + Withdrawn)</div><div class="hdt">Combined economic return</div></div>
+          <div><div class="hval" style="color:var(--pur)">${S(total)}</div>
+          <div class="hsub2 hg nu">+${recov}% total return</div></div>
+        </div>
+        ${exceedsCap?`<div class="rdm-warning">⚠ Requested ${Math.round(wdPctAnnual*100)}%/yr exceeds the 10% annual policy cap. Actual withdrawals limited to 2.5%/quarter.</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+
+  // YEAR TABLE
+  document.getElementById('rdmYearTbl').innerHTML=yearData.map(d=>{
+    const key=[3,5,7].includes(d.yr);
+    const capped=Math.abs(d.requested-d.actualWd)>10;
+    return`<tr ${key?'style="font-weight:700"':''}>
+      <td>${START+d.yr} (Yr ${d.yr})${key?' ⭐':''}</td>
+      <td>${C(d.startBal)}</td>
+      <td class="pos">+${C(d.growth)}</td>
+      <td style="color:var(--mu)">${C(d.requested)}</td>
+      <td ${capped?'class="neg"':'class="pos"'}>${C(d.actualWd)}${capped?' ⚠ Capped':''}</td>
+      <td class="pu">${C(d.endBal)}</td>
+      <td style="color:var(--gold);font-weight:700">${C(d.cumWd)}</td>
+    </tr>`;
+  }).join('');
+
+  // BAR CHART
+  const maxBar=Math.max(...yearData.map(d=>d.endBal+d.cumWd));
+  document.getElementById('rdmBars').innerHTML=yearData.map(d=>{
+    const balPct=Math.min((d.endBal/maxBar)*100,100);
+    const wdPct2=Math.min((d.cumWd/maxBar)*100,100);
+    return`<div class="bg-group">
+      <div class="bg-lbl">Year ${d.yr} (${START+d.yr})</div>
+      <div class="bi"><div class="bm">
+        <span class="bln">🏦 Remaining Balance</span>
+        <span class="bnum" style="color:var(--pur)">${C(d.endBal)}</span></div>
+        <div class="btrack"><div class="bfill" style="width:${balPct}%;background:#6b3fa0">${S(d.endBal)}</div></div>
+      </div>
+      <div class="bi"><div class="bm">
+        <span class="bln">💸 Cumulative Withdrawn</span>
+        <span class="bnum" style="color:var(--gold)">${C(d.cumWd)}</span></div>
+        <div class="btrack"><div class="bfill" style="width:${wdPct2}%;background:var(--gold)">${S(d.cumWd)}</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── TAB SWITCHER ─────────────────────────────────────────────────
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ─── FILE UPLOAD ──────────────────────────────────────────────────
+let parsedData={};
+function handleFileUpload(file){
+  if(!file)return;
+  const status=document.getElementById('uploadStatus');
+  const fields=document.getElementById('parsedFields');
+  const applyBtn=document.getElementById('applyBtn');
+  status.className='upload-status';
+  status.textContent='⏳ Reading: '+file.name+'…';
+  fields.style.display='none';applyBtn.disabled=true;parsedData={};
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const text=e.target.result; const ex={};
+    const m3=text.match(/3[- ]year[^%\d]*(\d+\.?\d*)\s*%/i);if(m3)ex.cagr3yr=parseFloat(m3[1]);
+    const mi=text.match(/since\s+inception[^%\d]*(\d+\.?\d*)\s*%/i);if(mi)ex.cagrInc=parseFloat(mi[1]);
+    const my=text.match(/(?:2025|2024)[^%\d]*(\d+\.?\d*)\s*%/);if(my)ex.latestYr=parseFloat(my[1]);
+    const mn=text.match(/Class\s+I[^$]*\$\s*(\d+\.\d+)/i);if(mn)ex.nav=parseFloat(mn[1]);
+    if(Object.keys(ex).length>=1){
+      parsedData=ex;status.className='upload-status loaded';
+      status.textContent='✅ Parsed from "'+file.name+'". Review and click Apply.';
+      fields.style.display='grid';
+      document.getElementById('pf-cagr').textContent=ex.cagr3yr?ex.cagr3yr.toFixed(2)+'%':'Not found';
+      document.getElementById('pf-incept').textContent=ex.cagrInc?ex.cagrInc.toFixed(2)+'%':'Not found';
+      document.getElementById('pf-yr').textContent=ex.latestYr?'+'+ex.latestYr.toFixed(2)+'%':'Not found';
+      document.getElementById('pf-nav').textContent=ex.nav?'$'+ex.nav.toFixed(2):'Not found';
+      applyBtn.disabled=false;
+    } else {
+      status.className='upload-status error';
+      status.textContent='⚠ Could not extract data from "'+file.name+'". Try a text export or CSV.';
+    }
+  };
+  reader.readAsText(file);
+}
+function applyParsedData(){
+  if(!parsedData.cagr3yr){alert('No 3-year CAGR found.');return;}
+  const nb=Math.round(parsedData.cagr3yr);
+  const bs=document.getElementById('baseRate');
+  let found=false;
+  for(let o of bs.options){if(parseInt(o.value)===nb){o.selected=true;found=true;break;}}
+  if(!found){const o=document.createElement('option');o.value=nb;o.textContent=nb+'%/yr';o.selected=true;bs.appendChild(o);}
+  recalcAll();
+  document.getElementById('uploadStatus').className='upload-status loaded';
+  document.getElementById('uploadStatus').textContent='✅ Applied! Base Case → '+nb+'%. All sections updated.';
+  document.getElementById('applyBtn').disabled=true;
+}
+const dz=document.getElementById('dropZone');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--accent)';dz.style.background='#eef4ff';});
+dz.addEventListener('dragleave',()=>{dz.style.borderColor='#c0d0e8';dz.style.background='var(--bg)';});
+dz.addEventListener('drop',e=>{e.preventDefault();dz.style.borderColor='#c0d0e8';dz.style.background='var(--bg)';
+  const f=e.dataTransfer.files[0];if(f)handleFileUpload(f);});
+
+// ─── INIT ─────────────────────────────────────────────────────────
+recalcAll();
+recalcRdm();
 </script>
 </body>
 </html>
